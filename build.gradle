@@ -1,0 +1,51 @@
+group 'com.nfa'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'idea'
+apply plugin: 'application'
+apply plugin: 'org.jetbrains.dokka'
+
+sourceCompatibility = 1.8
+
+sourceSets {
+    main.java.srcDirs = ["src/main/java/"]
+    main.kotlin.srcDirs = ["src/main/kotlin/"]
+}
+
+mainClassName = "com.nfa.konflagration.KonflagrationKt"
+
+buildscript {
+    repositories {
+        mavenCentral()
+        flatDir dirs: "${rootDir}/lib"
+    }
+
+    ext {
+        kotlinVersion = "1.0.0-beta-2423"
+        intellijFormsVersion = "142.1"
+        jcommonVersion = "1.0.23"
+        jfreeChartVersion = "1.0.19"
+        appacheMathVersion = "3.2"
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    }
+}
+
+repositories {
+    mavenCentral()
+    flatDir dirs: "${rootDir}/lib"
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    compile "org.jfree:jcommon:$jcommonVersion"
+    compile "org.jfree:jfreechart:$jfreeChartVersion"
+    compile "org.apache.commons:commons-math3:$appacheMathVersion"
+    compile "com.github.adedayo.intellij.sdk:forms_rt:$intellijFormsVersion"
+}
