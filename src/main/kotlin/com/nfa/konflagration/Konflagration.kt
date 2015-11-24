@@ -10,7 +10,6 @@ import org.jfree.chart.plot.PlotOrientation
 import org.jfree.data.xy.XYSeriesCollection
 import java.awt.Color
 import java.awt.Dimension
-import javax.swing.JOptionPane
 import javax.swing.UIManager
 
 /**
@@ -54,8 +53,10 @@ private fun configureGui() {
     }
 }
 
-private fun popup(message: String) = JOptionPane.showMessageDialog(null, message)
-
+/***
+ * Various properties and constants for the program
+ * @property LAF_NAME the name of the look and feel that Konflagration will use
+ */
 object Konflagration {
     private val NIMBUS: String = UIManager.getInstalledLookAndFeels().firstOrNull { info -> info.getName().equals("Nimbus") }?.className ?: ""
     private val METAL: String = UIManager.getInstalledLookAndFeels().firstOrNull { info -> info.getName().equals("Metal") }?.className ?: ""
